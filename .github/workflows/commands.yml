@@ -1,23 +1,23 @@
 name: Commands
 on:
-    issue_comment:
-        types: [created]
+  issue_comment:
+    types: [created, labeled]
 
 # also make changes in ./on-label.yml
 jobs:
-    main:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Actions
-              uses: actions/checkout@v2
-              with:
-                  repository: 'grafana/grafana-github-actions'
-                  path: ./actions
-                  ref: main
-            - name: Install Actions
-              run: npm install --production --prefix ./actions
-            - name: Run Commands
-              uses: ./actions/commands
-              with:
-                  token: ${{secrets.GRAFANA_ISSUE_TRIAGE_BOT_TOKEN}}
-                  config-path: commands
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v2
+        with:
+          repository: "grafana/grafana-github-actions"
+          path: ./actions
+          ref: main
+      - name: Install Actions
+        run: npm install --production --prefix ./actions
+      - name: Run Commands
+        uses: ./actions/commands
+        with:
+          token: ${{secrets.GRAFANA_ISSUE_TRIAGE_BOT_TOKEN}}
+          config-path: commands
