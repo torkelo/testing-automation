@@ -1,7 +1,7 @@
 name: Commands
 on:
-  issue_comment:
-    types: [created, labeled]
+  issues:
+    types: [labeled]
 
 # also make changes in ./on-label.yml
 jobs:
