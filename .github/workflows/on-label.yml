@@ -1,4 +1,4 @@
-name: Commands
+name: On label added
 on:
   issues:
     types: [labeled]
